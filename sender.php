@@ -1,5 +1,5 @@
 <?php
-
+$db_connect = mysqli_connect("localhost", "root", "root", "galleryL5") or die("Ошибка соединения с БД");
 function handle_error($user_error_message, $system_error_message)
 {
     die ($user_error_message . " " . $system_error_message);
@@ -23,7 +23,11 @@ while(file_exists($upload_filename = $upload_dir . $now . '-' . $_FILES[$image_f
     $now++;
 }
 echo $upload_filename;
-@move_uploaded_file($_FILES[$image_fildname]['tmp_name'], $upload_filename) or handle_error("Возникла ошибка при сохранении файла", "ошибка: {$system_error_message}");
+$image_name = $_FILES[$image_fildname]['name'];
+$image_size = $_FILES[$image_fildname]['size'];
+@move_uploaded_file($_FILES[$image_fildname]['tmp_name'], $upload_filename) or handle_error("Возникла ошибка при сохранении файла", $php_errormsg);
+mysqli_query($db_connect, "INSERT INTO images SET url='$upload_filename', size='$image_size',
+name='$image_name'") or die("Проблема загрузки в базу");
 echo '<p><a href="index.php">Вернуться в галерею</a></p>';
 
 ?>

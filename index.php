@@ -1,18 +1,14 @@
 <?php
+
 function getPics()
 {
-    $i = new DirectoryIterator("./images");
-    $thumbs = [];
-    foreach ($i as $v) {
-        if ($v == '.' || $v == '..' || is_dir('./images' . $v)) {
-            continue;
-        }
-        $thumbs[] = $v->getFilename();
-    }
+    $db_connect = mysqli_connect("localhost", "root", "root", "galleryL5") or die("Ошибка соединения с БД");
+    $result = mysqli_query($db_connect, "SELECT * FROM images ORDER BY views DESC ");
     $gallery_items = '';
-    for($item = 0; $item < count($thumbs); $item++){
-        $gallery_items = $gallery_items . "<a target='_blank' href='images/{$thumbs[$item]}'> <img src='images/{$thumbs[$item]}' width='150' /></a>";
+    while ($row = mysqli_fetch_assoc($result)){
+        $gallery_items = $gallery_items . "<a href='fullsize.php?id={$row['id']}'> <img src='{$row['url']}' width='150' /><small style='display: block'>{$row['name']}</small></a>";
     }
+
     return $gallery_items;
 }
 
