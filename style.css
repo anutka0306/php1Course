@@ -1,0 +1,45 @@
+body{
+    width: 100%;
+    margin: 0 auto;
+    background-color: cornsilk;
+}
+header{
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+}
+.gallery{
+    display: flex;
+    width: 90%;
+    margin-top: 30px;
+}
+.gallery-wrapper{
+    width: 60%;
+    padding-right: 30px;
+}
+.gallery-form{
+    width: 40%;
+    padding-left: 30px;
+}
+.gallery-thumbs_item{
+    display: flex;
+    flex-wrap: wrap;
+}
+.gallery-thumbs_item a{
+    padding: 5px;
+}
+form{
+    border-color: transparent !important;
+    font-family: Verdana;
+    font-size: 14px;
+}
+.fieldset{
+    display: block;
+    margin-bottom: 10px !important;
+    border: none !important;
+}
+input{
+    padding: 10px;
+    font-family: Verdana;
+    font-size: 14px;
+}
