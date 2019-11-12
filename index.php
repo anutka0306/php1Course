@@ -1,8 +1,11 @@
 <?php
+include 'config/db_connect.php';
 include 'funcs/calcFuncs.php';
 $pages=[
   'calc1'=>'pages/calc1.php',
   'calc2'=> 'pages/calc2.php',
+  'catalog'=>'pages/catalog.php',
+  'good'=>'pages/good.php',
 ];
 ?>
 

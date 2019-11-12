@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.catalog_wrapper{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.catalog_item{
+    padding: 10px 15px;
+    text-align: center;
+}
