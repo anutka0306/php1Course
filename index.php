@@ -2,10 +2,10 @@
 include 'config/db_connect.php';
 include 'funcs/calcFuncs.php';
 $pages=[
-  'calc1'=>'pages/calc1.php',
-  'calc2'=> 'pages/calc2.php',
-  'catalog'=>'pages/catalog.php',
-  'good'=>'pages/good.php',
+  'calc1'=>['pages/calc1.php', 'visible'],
+  'calc2'=> ['pages/calc2.php', 'visible'],
+  'catalog'=>['pages/catalog.php', 'visible'],
+  'good'=>['pages/good.php', 'invisible'],
 ];
 ?>
 
@@ -26,7 +26,7 @@ $pages=[
 <nav class="main-nav">
     <ul>
         <?php foreach ($pages as $page => $value): ?>
-        <li><a href="?page=<?=$page?>"><?=$page?></a></li>
+        <li class="<?=$value[1]?>"><a href="?page=<?=$page?>"><?=$page?></a></li>
         <?php endforeach; ?>
         <?php
         //var_dump($_GET);
@@ -37,7 +37,7 @@ $pages=[
 <main>
     <?php if($_GET['page']){
        $cur_page = $_GET['page'];
-        include $pages[$cur_page];
+        include $pages[$cur_page][0];
     }
      ?>
 </main>

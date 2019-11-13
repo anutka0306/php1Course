@@ -1,5 +1,5 @@
 <?php
-$result = mysqli_query($link, "SELECT * FROM goods") or die("Error");
+$result = mysqli_query($link, "SELECT * FROM goods ORDER BY views_count DESC") or die("Error");
 ?>
 <div class="catalog_wrapper">
     <?php while ($row = mysqli_fetch_assoc($result)): ?>
