@@ -1,4 +1,8 @@
 <?php
+function page_update(){
+header("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+}
+
 if(isset($_GET['id'])){
     $good_id = trim($_GET['id']);
 }
@@ -51,6 +55,7 @@ $reviews = mysqli_query($link, "SELECT id, author, text, date FROM reviews RIGHT
             $date = $_POST['date'];
 
             mysqli_query($link, "INSERT INTO reviews SET author='$author', text='$text', date='$date', good_id='$good_id'");
+            page_update();
         }
         ?>
     </div>
