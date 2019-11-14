@@ -1,7 +1,4 @@
 <?php
-function page_update(){
-header("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-}
 
 if(isset($_GET['id'])){
     $good_id = trim($_GET['id']);
@@ -30,6 +27,7 @@ $reviews = mysqli_query($link, "SELECT id, author, text, date FROM reviews RIGHT
             <p>Price: <?=$row['price']?> RUB.</p>
             <p>Views: <?=$row['views_count']?></p>
         </div>
+        <a href="?page=edit-good&id=<?=$good_id?>">РЕДАКТИРОВАТЬ ТОВАР</a>
     </div>
     <div class="reviews-wrapper">
         <h2>REVIEWS</h2>
@@ -44,7 +42,7 @@ $reviews = mysqli_query($link, "SELECT id, author, text, date FROM reviews RIGHT
         <h3>Write new review</h3>
         <form method="post">
             <input type="text" name="author"><br>
-            <textarea name="review-text" cols="20" rows="5"> </textarea><br>
+            <textarea name="review-text" cols="30" rows="5"> </textarea><br>
             <input type="hidden" value="<?=date("Y-m-d H:i:s")?>" name="date">
             <input type="submit" name="send-review">
         </form>
@@ -55,7 +53,7 @@ $reviews = mysqli_query($link, "SELECT id, author, text, date FROM reviews RIGHT
             $date = $_POST['date'];
 
             mysqli_query($link, "INSERT INTO reviews SET author='$author', text='$text', date='$date', good_id='$good_id'");
-            page_update();
+            page_update("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
         }
         ?>
     </div>

@@ -1,11 +1,13 @@
 <?php
 include 'config/db_connect.php';
 include 'funcs/calcFuncs.php';
+include 'funcs/catalogFuncs.php';
 $pages=[
   'calc1'=>['pages/calc1.php', 'visible'],
   'calc2'=> ['pages/calc2.php', 'visible'],
   'catalog'=>['pages/catalog.php', 'visible'],
   'good'=>['pages/good.php', 'invisible'],
+  'edit-good' =>['controller/editGood.php', 'invisible'],
 ];
 ?>
 
@@ -22,7 +24,7 @@ $pages=[
 <body>
 <header>
     <h1>My Small App</h1>
-</header>
+
 <nav class="main-nav">
     <ul>
         <?php foreach ($pages as $page => $value): ?>
@@ -33,6 +35,7 @@ $pages=[
         ?>
     </ul>
 </nav>
+</header>
 
 <main>
     <?php if($_GET['page']){
