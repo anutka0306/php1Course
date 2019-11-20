@@ -3,11 +3,12 @@ include 'config/db_connect.php';
 include 'funcs/calcFuncs.php';
 include 'funcs/catalogFuncs.php';
 $pages=[
-  'calc1'=>['pages/calc1.php', 'visible'],
-  'calc2'=> ['pages/calc2.php', 'visible'],
-  'catalog'=>['pages/catalog.php', 'visible'],
-  'good'=>['pages/good.php', 'invisible'],
-  'edit-good' =>['controller/editGood.php', 'invisible'],
+  'calc1'=>['pages/calc1.php', 'invisible', 'Калькулятор 1'],
+  'calc2'=> ['pages/calc2.php', 'invisible', 'Калькулятор 2'],
+  'catalog'=>['pages/catalog.php', 'visible', 'Каталог'],
+  'good'=>['pages/good.php', 'invisible', 'Товар'],
+  'edit-good' =>['controller/editGood.php', 'invisible', ''],
+    'auth' =>['pages/auth.php', 'visible', 'Вход/Регистрация'],
 ];
 ?>
 
@@ -28,7 +29,7 @@ $pages=[
 <nav class="main-nav">
     <ul>
         <?php foreach ($pages as $page => $value): ?>
-        <li class="<?=$value[1]?>"><a href="?page=<?=$page?>"><?=$page?></a></li>
+        <li class="<?=$value[1]?>"><a href="?page=<?=$page?>"><?=$value[2]?></a></li>
         <?php endforeach; ?>
         <?php
         //var_dump($_GET);

@@ -12,7 +12,6 @@ function page_update($location){
 }
 
 function send_edited_good($good_id, $link){
-
     $upload_dir = "upload/";
     $image_fildname = "user_pic";
     $name = trim($_POST['name']);
@@ -36,15 +35,19 @@ function send_edited_good($good_id, $link){
     //page_update("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 }
 
-function handle_error($user_error_message, $system_error_message)
-{
+function handle_error($user_error_message, $system_error_message){
     die ($user_error_message . " " . $system_error_message);
 }
-
-
-
 
 if($_POST['send-edit-good']){
     $good_id = $_POST['good_id'];
     send_edited_good($good_id, $link);
+}
+
+function clearString($str){
+    $str = trim($str);
+    $str = strip_tags($str);
+    $str = htmlspecialchars($str);
+
+    return $str;
 }
