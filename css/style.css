@@ -65,3 +65,9 @@ main{
 .auth_wrapper{
     display: flex;
 }
+.info-message{
+    padding: 10px;
+    width: 60%;
+    color: darkred;
+    font-weight: bold;
+}

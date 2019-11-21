@@ -9,6 +9,7 @@ $pages=[
   'good'=>['pages/good.php', 'invisible', 'Товар'],
   'edit-good' =>['controller/editGood.php', 'invisible', ''],
     'auth' =>['pages/auth.php', 'visible', 'Вход/Регистрация'],
+    'account' =>['pages/account.php', 'invisible', 'Аккаунт'],
 ];
 ?>
 
@@ -31,9 +32,8 @@ $pages=[
         <?php foreach ($pages as $page => $value): ?>
         <li class="<?=$value[1]?>"><a href="?page=<?=$page?>"><?=$value[2]?></a></li>
         <?php endforeach; ?>
-        <?php
-        //var_dump($_GET);
-        ?>
+        <li class="visible"><a href="?page=auth&exit=true">Выход</a></li>
+
     </ul>
 </nav>
 </header>

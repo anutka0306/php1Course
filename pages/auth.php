@@ -1,9 +1,11 @@
 <?php
-$is_auth = false;
-//var_dump($_POST);
+
+if($_GET['exit'] == true){
+    session_destroy();
+}
 if($_POST['authEnterBtn']){
 if(empty($_POST['login']) || empty($_POST['password'])){
-    echo 'Все поля обязательны для заполнения';
+    $_SESSION['message'] = 'Все поля обязательны для заполнения';
 }else{
     $login = clearString($_POST['login']);
     $password = clearString($_POST['password']);
@@ -11,18 +13,25 @@ if(empty($_POST['login']) || empty($_POST['password'])){
     $query = mysqli_query($link, "SELECT * FROM users WHERE login='{$login}'") or die ("ERROR");
     $row = mysqli_fetch_assoc($query);
     if(($row['login'] != $login) || ($row['password'] != $password)){
-        echo 'Ошибка авторизации';
+        $_SESSION['message'] = 'Ошибка авторизации';
     }else{
-        echo 'Добро пожаловать, '.$row['name'];
+        $_SESSION['message'] ='Добро пожаловать, '.$row['name'].'<br>';
         $is_auth = true;
         if($is_auth){
-            echo 'Права пользователя: '. $row['role'];
+           $_SESSION['message'] = $_SESSION['message'] .'Права пользователя: '. $row['role'];
+           $_SESSION['user']['name'] = $row['name'];
+           $_SESSION['user']['role'] = $row['role'];
+           $pages['account'][1] = 'visible';
+           $pages['auth'][1] = 'invisible';
+           header('Location:?page=account');
         }
     }
 
 }
 }
+var_dump($_SESSION);
 ?>
+<div class="info-message"><?= $_SESSION['message']?></div>
 <div class="auth_wrapper">
     <div class="auth_enter">
         <h3>Вход</h3>

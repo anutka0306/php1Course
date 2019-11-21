@@ -1,5 +1,8 @@
 <?php
 include 'config/db_connect.php';
+session_start();
+$_SESSION['message'] = '';
+$is_auth = false;
 
 $php_errors = array(1 => 'Превышен мах. размер файла, указанный в php.ini',
     2 => 'Превышенм мах. размер файла, указанный в форме html',
