@@ -1,3 +1,4 @@
+
 <?php
 
 if(isset($_GET['id'])){
@@ -27,8 +28,9 @@ $reviews = mysqli_query($link, "SELECT id, author, text, date FROM reviews RIGHT
             <p>Price: <?=$row['price']?> RUB.</p>
             <p>Views: <?=$row['views_count']?></p>
         </div>
-        <a href="?page=edit-good&id=<?=$good_id?>">РЕДАКТИРОВАТЬ ТОВАР</a>
-    </div>
+        <a class="editBtn" href="?page=edit-good&id=<?=$good_id?>">РЕДАКТИРОВАТЬ ТОВАР</a><br>
+        <a class="addBtn" href="?page=good&action=add&id=<?=$good_id?>">ДОБАВИТЬ В КОРЗИНУ</a>
+</div>
     <div class="reviews-wrapper">
         <h2>REVIEWS</h2>
        <?php while ($row_reviews = mysqli_fetch_assoc($reviews)): ?>
@@ -59,5 +61,6 @@ $reviews = mysqli_query($link, "SELECT id, author, text, date FROM reviews RIGHT
     </div>
 </div>
 <?php endwhile; ?>
+
 
 

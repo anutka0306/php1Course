@@ -4,12 +4,43 @@ session_start();
 $_SESSION['message'] = '';
 $is_auth = false;
 
+if($_GET['action'] != null){
+    switch ($_GET['action']){
+        case 'add':
+            add_to_cart($_GET['id']);
+            break;
+        default:
+            echo 'Что-то пошло не так!';
+    }
+}
+
+var_dump($_SESSION['cart']['items']);
+
 $php_errors = array(1 => 'Превышен мах. размер файла, указанный в php.ini',
     2 => 'Превышенм мах. размер файла, указанный в форме html',
     3 => 'Была отправлена только часть файла',
     4 => 'Файл для отправки не был выбран');
 
+function add_to_cart($id){
+    if($_SESSION['cart']['items'] != null) {
+       for($i = 0; $i < count($_SESSION['cart']['items']); $i++){
+           if($_SESSION['cart']['items'][$i]['good_id'] == $id){
+               $_SESSION['cart']['items'][$i]['quantity'] += 1;
+               return;
+           }else{
+               continue;
+           }
+       }
+        $_SESSION['cart']['items'][] = ['good_id' => $id, 'quantity' => 1];
+    }else{
+        $_SESSION['cart']['items'][] = ['good_id' => $id, 'quantity' => 1];
+    }
 
+}
+
+function remove_from_cart(){
+
+}
 function page_update($location){
     header($location);
 }
