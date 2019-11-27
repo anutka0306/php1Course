@@ -9,6 +9,9 @@ if($_GET['action'] != null){
         case 'add':
             add_to_cart($_GET['id']);
             break;
+        case 'remove':
+            remove_from_cart($_GET['id']);
+            break;
         default:
             echo 'Что-то пошло не так!';
     }
@@ -38,9 +41,27 @@ function add_to_cart($id){
 
 }
 
-function remove_from_cart(){
-
+function remove_from_cart($id){
+   if(count($_SESSION['cart']['items']) > 0){
+       for($i = 0; $i < count($_SESSION['cart']['items']); $i++){
+           if($_SESSION['cart']['items'][$i]['good_id'] == $id){
+               if( $_SESSION['cart']['items'][$i]['quantity'] == 1){
+                   //unset($_SESSION['cart']['items'][$i]);
+                   array_splice($_SESSION['cart']['items'], $i, 1);
+                   header('Location:?page=cart');
+               }else{
+                   $_SESSION['cart']['items'][$i]['quantity'] -= 1;
+                   return;
+               }
+           }else{
+               continue;
+           }
+       }
+   }else{
+       $_SESSION['message'] = 'Your cart is empty!';
+   }
 }
+
 function page_update($location){
     header($location);
 }

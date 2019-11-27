@@ -76,3 +76,14 @@ main{
     padding: 20px 50px;
     justify-content: space-around;
 }
+.cart-wrapper{
+    padding: 30px 20px;
+}
+.cart-good-row{
+    display: flex;
+    justify-content: space-between;
+}
+.cart-good-quantity{
+    display: flex;
+    align-items: center;
+}
