@@ -1,10 +1,10 @@
 
 <div class="cart-wrapper">
     <h2>Ваша Корзина</h2>
-    <div class="info-message"><?= $_SESSION['message']?></div>
 <?php
-var_dump($_SESSION['cart']['items']);
-echo count($_SESSION['cart']['items']);
+if(count($_SESSION['cart']['items']) == 0) {
+    $_SESSION['message'] = 'Your cart is empty!';
+}
 for($i=0; $i < count($_SESSION['cart']['items']); $i++){
     $cur_id  = $_SESSION['cart']['items'][$i]['good_id'];
     $query = mysqli_query($link, "SELECT * FROM goods WHERE good_id='$cur_id'");
@@ -25,7 +25,13 @@ for($i=0; $i < count($_SESSION['cart']['items']); $i++){
     <?php
     }
 }
-
 ?>
 </div>
-<a href="">Оформить заказ</a>
+<div class="info-message"><?=$_SESSION['message']?></div>
+<?php if(!isset($_SESSION['user'])): ?>
+<p>Для продолжения нужно Авторизоваться или Зарегистироваться и Войти</p>
+<?php else: ?>
+<?php if(count($_SESSION['cart']['items']) != 0 && $_SESSION['cart']['items'] != null): ?>
+<a href="?page=cart&action=makeOrder">Оформить заказ</a>
+<?php endif; ?>
+<?php endif; ?>

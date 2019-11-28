@@ -21,6 +21,7 @@ if(empty($_POST['login']) || empty($_POST['password'])){
         $is_auth = true;
         if($is_auth){
            $_SESSION['message'] = $_SESSION['message'] .'Права пользователя: '. $row['role'];
+           $_SESSION['user']['id'] = $row['id'];
            $_SESSION['user']['name'] = $row['name'];
            $_SESSION['user']['role'] = $row['role'];
            header('Location:?page=account');
