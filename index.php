@@ -8,6 +8,7 @@ $pages=[
   'catalog'=>['pages/catalog.php', 'visible', 'Каталог'],
   'good'=>['pages/good.php', 'invisible', 'Товар'],
   'edit-good' =>['controller/editGood.php', 'invisible', ''],
+    'add-good' =>['controller/addGood.php', 'invisible', ''],
     'auth' =>['pages/auth.php', 'visible', 'Вход/Регистрация'],
     'account' =>['pages/account.php', 'visible', 'Аккаунт'],
     'cart' =>['pages/cart.php', 'visible', 'Корзина'],
