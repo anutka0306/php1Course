@@ -1,0 +1,96 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Verdana";
+}
+header{
+    height: 130px;
+    width: 100%;
+    padding: 10px 30px;
+    background: cornsilk;
+}
+input{
+    margin: 10px 0px;
+    width: 200px;
+}
+.main-nav{
+    display: flex;
+    justify-content: center;
+}
+.main-nav ul{
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+.main-nav ul li a{
+    color: crimson;
+    font-size: 20px;
+}
+.catalog_wrapper{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 100px;
+
+}
+.catalog_item{
+    padding: 10px 15px;
+    text-align: center;
+}
+.invisible{
+    display: none;
+}
+main{
+    background-color: antiquewhite;
+}
+.good-wrapper{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px;
+}
+.good-wrapper h1{
+    width: 100%;
+}
+.good-pic{
+    margin-right: 20px;
+}
+.good-info{
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 300px;
+}
+.auth_wrapper{
+    display: flex;
+}
+.info-message{
+    padding: 10px;
+    width: 60%;
+    color: darkred;
+    font-weight: bold;
+}
+.auth_wrapper{
+    display: flex;
+    padding: 20px 50px;
+    justify-content: space-around;
+}
+.cart-wrapper{
+    padding: 30px 20px;
+}
+.cart-good-row{
+    display: flex;
+    justify-content: space-between;
+}
+.cart-good-quantity{
+    display: flex;
+    align-items: center;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
