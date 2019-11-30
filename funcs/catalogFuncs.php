@@ -121,6 +121,12 @@ function send_new_good($link, $name, $description, $price, $php_errors){
     //page_update("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 }
 
+function change_order_status($link, $new_status, $order_id){
+ mysqli_query($link, "UPDATE orders SET status_id='$new_status' WHERE order_id = '$order_id'") or die ("Ошибка смены статуса заказа");
+ $_SESSION['message'] = 'Статус заказа '.$order_id. ' успешно изменен!';
+    //page_update("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+}
+
 function handle_error($user_error_message, $system_error_message){
     die ($user_error_message . " " . $system_error_message);
 }
@@ -139,6 +145,11 @@ if($_POST['send-new-good']){
         send_new_good($link,$name,$description,$price,$php_errors);
     }
 
+}
+if($_POST['change_order_status']){
+    $new_status = $_POST['orderStatus'];
+    $order_id =$_POST['orderId'];
+    change_order_status($link, $new_status, $order_id);
 }
 
 function clearString($str){

@@ -9,6 +9,7 @@ $pages=[
   'good'=>['pages/good.php', 'invisible', 'Товар'],
   'edit-good' =>['controller/editGood.php', 'invisible', ''],
     'add-good' =>['controller/addGood.php', 'invisible', ''],
+    'edit-orders' =>['controller/editOrders.php', 'invisible', ''],
     'auth' =>['pages/auth.php', 'visible', 'Вход/Регистрация'],
     'account' =>['pages/account.php', 'visible', 'Аккаунт'],
     'cart' =>['pages/cart.php', 'visible', 'Корзина'],
@@ -40,7 +41,6 @@ $pages=[
 <body>
 <header>
     <h1>My Small App</h1>
-<?php var_dump($_SESSION); ?>
 <nav class="main-nav">
     <ul>
         <?php foreach ($pages as $page => $value): ?>

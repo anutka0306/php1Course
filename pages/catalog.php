@@ -1,7 +1,8 @@
 <?php
 $result = mysqli_query($link, "SELECT * FROM goods ORDER BY views_count DESC") or die("Error");
 ?>
-<a href="?page=add-good" class="editBtn">Добавить новый товар</a>
+<a href="?page=add-good" class="editBtn">Добавить новый товар</a><br>
+<a href="?page=edit-orders" class="editBtn">Редактировать статусы заказов</a>
 <div class="catalog_wrapper">
     <?php while ($row = mysqli_fetch_assoc($result)): ?>
     <div class="catalog_item">
